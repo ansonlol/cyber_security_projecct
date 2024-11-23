@@ -1,12 +1,12 @@
 Cyber Security Project
 
 **Repository Link**:  
-(https://github.com/ansonlol/cyber_security_projecct/)
+(https://github.com/ansonlol/cyber_security_projecct)
 
 Installation Instructions::  
 To run the application locally, follow these steps:
 1. Clone the repository:  
-git clone https://github.com/ansonlol/cyber_security_projecct/
+git clone https://github.com/ansonlol/cyber_security_projecct
 2. Navigate to the project directory:  
 cd <project_directory>
 3. Create and activate a virtual environment:    
