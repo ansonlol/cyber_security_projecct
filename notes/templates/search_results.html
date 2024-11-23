@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Search Results</h2>
+<form action="{% url 'search_notes' %}" method="GET">
+    <input type="text" name="q" placeholder="Search notes...">
+    <button type="submit">Search</button>
+</form>
+
+{% if notes %}
+    <ul>
+    {% for note in notes %}
+        <li>
+            <a href="{% url 'view_note' note.0 %}">{{ note.1 }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No notes found.</p>
+{% endif %}
+
+<a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}

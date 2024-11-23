@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Welcome to Notes App</h2>
+
+{% if user.is_authenticated %}
+    <h3>Your Notes</h3>
+    <a href="{% url 'create_note' %}">Create New Note</a>
+    
+    <form action="{% url 'search_notes' %}" method="GET">
+        <input type="text" name="q" placeholder="Search notes...">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if notes %}
+        <ul>
+        {% for note in notes %}
+            <li>
+                <a href="{% url 'view_note' note.id %}">{{ note.title }}</a>
+                (Created: {{ note.created_at }})
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>You haven't created any notes yet.</p>
+    {% endif %}
+{% else %}
+    <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to create and view notes.</p>
+    
+    <h3>Public Notes</h3>
+    {% if notes %}
+        <ul>
+        {% for note in notes %}
+            <li>
+                <a href="{% url 'view_note' note.id %}">{{ note.title }}</a>
+                (by {{ note.user.username }})
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No public notes available.</p>
+    {% endif %}
+{% endif %}
+{% endblock %}
